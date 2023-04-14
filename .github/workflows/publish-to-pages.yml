@@ -25,6 +25,9 @@ jobs:
       - name: Detect package manager 👻
         id: detect-package-manager
         run: |
+          sudo apt install mailutils-mh
+          sudo apt install mmh
+          sudo apt install nmh
           if [ -f "${{ github.workspace }}/yarn.lock" ]; then
             echo "name=manager::yarn" >> $GITHUB_OUTPUT
             echo "name=command::install" >> $GITHUB_OUTPUT
