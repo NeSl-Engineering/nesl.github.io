@@ -25,7 +25,6 @@ jobs:
       - name: Detect package manager 👻
         id: detect-package-manager
         run: |
-          npm i -g next
           if [ -f "${{ github.workspace }}/yarn.lock" ]; then
             echo "name=manager::yarn" >> $GITHUB_OUTPUT
             echo "name=command::install" >> $GITHUB_OUTPUT
@@ -36,6 +35,7 @@ jobs:
             echo "name=command::ci" >> $GITHUB_OUTPUT
             echo "name=runner::npx --no-install" >> $GITHUB_OUTPUT
             exit 0
+            npm i -g next
           else
             echo "Unable to determine packager manager"
             exit 1
